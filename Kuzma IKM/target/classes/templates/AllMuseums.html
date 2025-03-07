@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Все музеи</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+  <h1>Список музеев</h1>
+  <nav>
+    <a th:href="@{/}">Главная</a>
+    <a th:href="@{/AllExhibits}">Экспонаты</a>
+    <a th:href="@{/AllHalls}">Залы</a>
+    <a th:href="@{/AllMuseums}">Музеи</a>
+  </nav>
+</header>
+<main>
+  <ul>
+    <li th:each="museum : ${museums}">
+      <span th:text="${museum.museumsName}"></span> - <span th:text="${museum.city}"></span>
+      <a th:href="@{/editMuseum/{id}(id=${museum.id})}">Редактировать</a>
+      <form th:action="@{/deleteMuseum/{id}(id=${museum.id})}" method="post" style="display:inline;">
+        <button type="submit">Удалить</button>
+      </form>
+    </li>
+  </ul>
+  <a th:href="@{/AddMuseum}">Добавить музей</a>
+</main>
+<footer>
+  <p>&copy; 2025 Музейная система</p>
+</footer>
+</body>
+</html>

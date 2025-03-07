@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование музея</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Подключаем стили, если есть -->
+</head>
+<body>
+
+<h1>Редактирование музея</h1>
+
+<form th:action="@{/editMuseum/{id}(id=${museum.id})}" th:object="${museum}" method="post">
+    <label for="museumsName">Название музея:</label>
+    <input type="text" id="museumsName" th:field="*{museumsName}" required>
+    <span th:if="${#fields.hasErrors('museumsName')}" th:errors="*{museumsName}" class="error"></span>
+    <br><br>
+
+    <label for="foundationYear">Год основания:</label>
+    <input type="number" id="foundationYear" th:field="*{foundationYear}" required>
+    <span th:if="${#fields.hasErrors('foundationYear')}" th:errors="*{foundationYear}" class="error"></span>
+    <br><br>
+
+    <label for="country">Страна:</label>
+    <input type="text" id="country" th:field="*{country}" required>
+    <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="error"></span>
+    <br><br>
+
+    <label for="city">Город:</label>
+    <input type="text" id="city" th:field="*{city}" required>
+    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="error"></span>
+    <br><br>
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+
+<br>
+<a href="/AllMuseums">Назад к списку музеев</a>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить экспонат</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Добавить экспонат</h1>
+    <nav>
+        <a th:href="@{/}">Главная</a>
+        <a th:href="@{/AllExhibits}">Экспонаты</a>
+        <a th:href="@{/AllHalls}">Залы</a>
+        <a th:href="@{/AllMuseums}">Музеи</a>
+    </nav>
+</header>
+<main>
+    <form th:action="@{/AddExhibit}" th:object="${exhibit}" method="post">
+        <label for="exhibitsName">Название:</label>
+        <input type="text" id="exhibitsName" th:field="*{exhibitsName}" required>
+        <br>
+        <label for="description">Описание:</label>
+        <textarea id="description" th:field="*{description}"></textarea>
+        <br>
+        <button type="submit">Добавить</button>
+    </form>
+    <a th:href="@{/}">На главную</a>
+</main>
+<footer>
+    <p>&copy; 2025 Музейная система</p>
+</footer>
+</body>
+</html>

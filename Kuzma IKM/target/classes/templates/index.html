@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Система управления музеем</h1>
+    <nav>
+        <a th:href="@{/}">Главная</a>
+        <a th:href="@{/AllExhibits}">Экспонаты</a>
+        <a th:href="@{/AllHalls}">Залы</a>
+        <a th:href="@{/AllMuseums}">Музеи</a>
+    </nav>
+</header>
+<main>
+    <h2>Экспонаты</h2>
+    <ul>
+        <li th:each="exhibit : ${exhibits}">
+            <span th:text="${exhibit.exhibitsName}"></span> - <span th:text="${exhibit.description}"></span>
+            <a th:href="@{/editExhibit/{id}(id=${exhibit.id})}">Редактировать</a>
+            <form th:action="@{/deleteExhibit/{id}(id=${exhibit.id})}" method="post" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+    </ul>
+    <a th:href="@{/AddExhibit}">Добавить экспонат</a>
+
+    <h2>Залы</h2>
+    <ul>
+        <li th:each="hall : ${halls}">
+            <span th:text="${hall.hallsName}"></span>
+            <a th:href="@{/editHall/{id}(id=${hall.id})}">Редактировать</a>
+            <form th:action="@{/deleteHall/{id}(id=${hall.id})}" method="post" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+    </ul>
+    <a th:href="@{/AddHall}">Добавить зал</a>
+
+    <h2>Музеи</h2>
+    <ul>
+        <li th:each="museum : ${museums}">
+            <span th:text="${museum.museumsName}"></span> - <span th:text="${museum.city}"></span>
+            <a th:href="@{/editMuseum/{id}(id=${museum.id})}">Редактировать</a>
+            <form th:action="@{/deleteMuseum/{id}(id=${museum.id})}" method="post" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+    </ul>
+    <a th:href="@{/AddMuseum}">Добавить музей</a>
+</main>
+<footer>
+    <p>&copy; 2025 Музейная система</p>
+</footer>
+</body>
+</html>

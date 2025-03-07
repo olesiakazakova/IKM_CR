@@ -1,0 +1,56 @@
+.container-small {
+    width: 600px;
+    margin-inline: auto;
+}
+
+.element__list {
+    position: relative;
+    list-style: none;
+}
+
+.element__item {
+    margin-bottom: 30px;
+}
+
+.element__item-link {
+    margin-bottom: 5px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.container{
+    margin-top: 50px;
+}
+
+.error__link,
+.button__link{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition-duration: 200ms;
+}
+
+.error__link:hover{
+    background-color: #292929;
+}
+
+.button__link{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-all, .btn-create{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-success{
+    margin-bottom: 10px
+}
