@@ -16,16 +16,38 @@
   </nav>
 </header>
 <main>
+  <!-- Сообщения об успехе/ошибке -->
+  <div th:if="${successMessage}" class="alert alert-success">
+    <span th:text="${successMessage}"></span>
+  </div>
+  <div th:if="${errorMessage}" class="alert alert-danger">
+    <span th:text="${errorMessage}"></span>
+  </div>
+
   <form th:action="@{/editExhibit/{id}(id=${exhibit.id})}" th:object="${exhibit}" method="post">
-    <label for="exhibitsName">Название:</label>
-    <input type="text" id="exhibitsName" th:field="*{exhibitsName}" required>
-    <br>
-    <label for="description">Описание:</label>
-    <textarea id="description" th:field="*{description}"></textarea>
-    <br>
-    <button type="submit">Сохранить</button>
+    <div class="form-group">
+      <label for="exhibitsName">Название:</label>
+      <input type="text" id="exhibitsName" th:field="*{exhibitsName}"
+             th:classappend="${#fields.hasErrors('exhibitsName')} ? 'error-border'" required>
+      <div th:if="${#fields.hasErrors('exhibitsName')}" class="error">
+        <span th:errors="*{exhibitsName}"></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Описание:</label>
+      <textarea id="description" th:field="*{description}"
+                th:classappend="${#fields.hasErrors('description')} ? 'error-border'"></textarea>
+      <div th:if="${#fields.hasErrors('description')}" class="error">
+        <span th:errors="*{description}"></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit">Сохранить</button>
+      <a th:href="@{/AllExhibits}" class="btn-cancel">Отмена</a>
+    </div>
   </form>
-  <a th:href="@{/}">На главную</a>
 </main>
 <footer>
   <p>&copy; 2025 Музейная система</p>

@@ -7,14 +7,25 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: Tevinell
-    password: iloveit
+    url: jdbc:postgresql://localhost:5432/cr
+    username: postgres
+    password: 12345
 
   jpa:
     hibernate:
       ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: true
+
+  mvc:
+    format:
+      date: yyyy-MM-dd
 
 springdoc:
   swagger-ui:

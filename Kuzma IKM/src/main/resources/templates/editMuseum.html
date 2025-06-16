@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактирование музея</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Подключаем стили, если есть -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
 <h1>Редактирование музея</h1>
 
 <form th:action="@{/editMuseum/{id}(id=${museum.id})}" th:object="${museum}" method="post">
+    <input type="hidden" th:field="*{id}">
+
     <label for="museumsName">Название музея:</label>
     <input type="text" id="museumsName" th:field="*{museumsName}" required>
     <span th:if="${#fields.hasErrors('museumsName')}" th:errors="*{museumsName}" class="error"></span>
     <br><br>
 
-    <label for="foundationYear">Год основания:</label>
-    <input type="number" id="foundationYear" th:field="*{foundationYear}" required>
+    <label for="foundationYear">Дата основания:</label>
+    <input type="date" id="foundationYear" th:field="*{foundationYear}" required>
     <span th:if="${#fields.hasErrors('foundationYear')}" th:errors="*{foundationYear}" class="error"></span>
     <br><br>
 

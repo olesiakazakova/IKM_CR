@@ -18,7 +18,7 @@
 <main>
   <ul>
     <li th:each="museum : ${museums}">
-      <span th:text="${museum.museumsName}"></span> - <span th:text="${museum.city}"></span>
+      <span th:text="${museum.museumsName}"></span> - <span th:text="${museum.city}"></span> - <span th:text="${museum.foundationYear != null ? museum.foundationYear.year : ''}"></span>
       <a th:href="@{/editMuseum/{id}(id=${museum.id})}">Редактировать</a>
       <form th:action="@{/deleteMuseum/{id}(id=${museum.id})}" method="post" style="display:inline;">
         <button type="submit">Удалить</button>
