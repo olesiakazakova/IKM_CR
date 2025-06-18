@@ -7,10 +7,9 @@ import ru.ikm.max.entity.Hall;
 import java.util.List;
 
 /**
- * Репозиторий для работы с сущностью {@link Exhibit}.
+ * Репозиторий для работы с сущностью Exhibit.
  * Предоставляет стандартные CRUD-операции и методы работы с БД.
- * Наследует функциональность {@link JpaRepository}.
- *
+ * Наследует функциональность JpaRepository.
  * <p>Основные возможности:</p>
  * <ul>
  *   <li>Сохранение и обновление экспонатов</li>
@@ -18,9 +17,6 @@ import java.util.List;
  *   <li>Получение списка всех экспонатов</li>
  *   <li>Удаление экспонатов</li>
  * </ul>
- *
- * @see JpaRepository
- * @see Exhibit
  */
 public interface ExhibitRepository extends JpaRepository<Exhibit, Long> {
 }
